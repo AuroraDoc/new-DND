@@ -1,91 +1,49 @@
-```Structure: 
-{
-    playerName: "name",
-    strangth: int,
-    dexterity: int,
-    constitution: int,
-    intellegence: int,
-    wisdom: int,
-    charisma: int,
-    ac: int,
-    maxEnergy: int,
-    health: int,
+import "../styles/PlayerTable.css"
 
-}
-```;
-function PlayerTable() {
+function PlayerTable({player}) {
   return (
-    <>
+    <div className="player-table">
+      <h2>{player.playerName}</h2>
       <table>
-        <tr>
-          <th>Stat</th>
-          <td>Strength</td>
-          <td>Dexterity</td>
-          <td>Constitution</td>
-          <td>Intelligance</td>
-          <td>Wisodm</td>
-          <td>Charisma</td>
-        </tr>
-        <tr>
-          <th>Stat Level</th>
-          <td>18</td>
-          <td>20</td>
-          <td>14</td>
-          <td>20</td>
-          <td>10</td>
-          <td>9</td>
-        </tr>
-        <tr>
-          <th>Stat Bonus</th>
-          <td>+4</td>
-          <td>+5</td>
-          <td>+2</td>
-          <td>+5</td>
-          <td>0</td>
-          <td>-1</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Stat</th>
+            <td>Strength</td>
+            <td>Dexterity</td>
+            <td>Constitution</td>
+            <td>Intelligance</td>
+            <td>Wisodm</td>
+            <td>Charisma</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Stat Level</th>
+            <td>{player.strength}</td>
+            <td>{player.dexterity}</td>
+            <td>{player.constitution}</td>
+            <td>{player.intellect}</td>
+            <td>{player.wisdom}</td>
+            <td>{player.charisma}</td>
+          </tr>
+          <tr>
+            <th>Stat Bonus</th>
+            <td>{Math.floor((player.strength - 10) / 2)}</td>
+            <td>{Math.floor((player.dexterity - 10) / 2)}</td>
+            <td>{Math.floor((player.constitution -10) / 2)}</td>
+            <td>{Math.floor((player.intellect - 10) / 2)}</td>
+            <td>{Math.floor((player.wisdom - 10) / 2)}</td>
+            <td>{Math.floor((player.charisma - 10) / 2)}</td>
+          </tr>
+
+          <tr>
+            <th>AC</th>
+            <td colSpan="6">{player.AC}</td>
+          </tr>
+        </tbody>
       </table>
 
-      <table>
-        <tr>
-          <th>AC</th>
-          <th>Max Energy</th>
-        </tr>
-        <tr>
-          <td>15</td>
-          <td>152</td>
-        </tr>
-      </table>
+    </div>)}
 
-      <h3>Health: 19/19</h3>
-
-      <table>
-        <tr>
-          <th>Weapons</th>
-          <th>Type</th>
-          <th>Attack(1H)</th>
-          <th>Attack(2H)</th>
-          <th>Throw</th>
-          <th>Range(Short)</th>
-          <th>Range(Long)</th>
-        </tr>
-        <tr>
-          <td>Dwerva</td>
-          <td>Sword</td>
-          <td>2-D4</td>
-          <td>2-D6</td>
-          <td>1-D4</td>
-          <td>20</td>
-          <td>60</td>
-        </tr>
-      </table>
-
-      <h3>Inventory</h3>
-      <table>
-        <tr></tr>
-      </table>
-    </>
-  );
-}
 
 export default PlayerTable;

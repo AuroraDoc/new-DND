@@ -1,15 +1,28 @@
 import { useState } from "react";
-import "./App.css";
-import SelectPlayer from "./components/SelectPlayer";
+import "./styles/App.css";
+import ItemsTable from "./components/ItemsTable";
+import PlayerCard from "./components/PlayerCard";
+import PlayerTable from "./components/PlayerTable"
+import Test from "./components/Test";
+import { mccoy, dennis, mak, bella } from "../players" 
+
+let players = [mccoy, dennis, mak, bella]
+
 
 function App() {
-  return (
-    <>
-      <div>
-        <SelectPlayer />
+
+  return <>
+    <div>
+      <div className="players-grid">
+        {players.map(player => <PlayerCard player={player} key={player.playerName}/>)}
       </div>
+      <div className="player-tables">
+        {players.map(player => <PlayerTable player={player} key={player.playerName}/>)}
+      </div>
+
+
+    </div>
     </>
-  );
 }
 
 export default App;

@@ -1,12 +1,5 @@
-```Structure: 
-{
-player1: [{Item Name: "...", short_desc: "...", long_desc": "...", buy: int, sell: int, quantity: int}],
-player2: [{Item Name: "...", short_desc: "...", long_desc": "...", buy: int, sell: int, quantity: int}],
-...
-}
 
-```;
-function ItemsTable(playerItems) {
+function ItemsTable() {
   return (
     <>
       <table>

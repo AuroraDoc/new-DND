@@ -1,0 +1,19 @@
+body{
+  background-color: bisque;
+}
+
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.player-tables{
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}

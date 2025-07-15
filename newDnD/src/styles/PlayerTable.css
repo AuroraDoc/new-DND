@@ -1,6 +1,6 @@
 .player-table {
   width: 100%;
-  max-width: 600px;
+  max-width: fit-content;
   border-collapse: collapse;
   margin-bottom: 2rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

@@ -3,7 +3,6 @@ import "./styles/App.css";
 import ItemsTable from "./components/ItemsTable";
 import PlayerCard from "./components/PlayerCard";
 import PlayerTable from "./components/PlayerTable"
-import Test from "./components/Test";
 import { mccoy, dennis, mak, bella } from "../players" 
 
 let players = [mccoy, dennis, mak, bella]
@@ -20,6 +19,7 @@ function App() {
         {players.map(player => <PlayerTable player={player} key={player.playerName}/>)}
       </div>
 
+      <ItemsTable player={} ></ItemsTable>
 
     </div>
     </>

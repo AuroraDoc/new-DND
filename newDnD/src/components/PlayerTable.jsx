@@ -1,5 +1,15 @@
 import "../styles/PlayerTable.css"
 
+function statBonus(stat){
+  let bonus = Math.floor((stat - 10) / 2)
+
+  if (bonus > 0) {
+    return `+ ${bonus}`
+  }
+
+  return bonus
+}
+
 function PlayerTable({player}) {
   return (
     <div className="player-table">
@@ -28,18 +38,25 @@ function PlayerTable({player}) {
           </tr>
           <tr>
             <th>Stat Bonus</th>
-            <td>{Math.floor((player.strength - 10) / 2)}</td>
-            <td>{Math.floor((player.dexterity - 10) / 2)}</td>
-            <td>{Math.floor((player.constitution -10) / 2)}</td>
-            <td>{Math.floor((player.intellect - 10) / 2)}</td>
-            <td>{Math.floor((player.wisdom - 10) / 2)}</td>
-            <td>{Math.floor((player.charisma - 10) / 2)}</td>
+            <td>{statBonus(player.strength)}</td>
+            <td>{statBonus(player.dexterity)}</td>
+            <td>{statBonus(player.constitution)}</td>
+            <td>{statBonus(player.intellect)}</td>
+            <td>{statBonus(player.wisdom)}</td>
+            <td>{statBonus(player.charisma)}</td>
           </tr>
-
           <tr>
             <th>AC</th>
             <td colSpan="6">{player.AC}</td>
           </tr>
+          <tr>
+            <th>Proficencies</th>
+            <td colSpan="1.5">{player.proficency1}</td>
+            <td colSpan="1.5">{player.proficency2}</td>
+            <td colSpan="1.5">{player.proficency3}</td>
+            <td colSpan="1.5">{player.proficency4}</td>
+          </tr>
+
         </tbody>
       </table>
 

@@ -1,14 +1,5 @@
 import { useState } from "react";
 
-let temp = {
-itemName: "",
-shortDesc: "",
-longDesc: "",
-goldBuy: 0,
-goldSell: 0,
-quantity: 0
-}
-
 function ItemsTable({player}) {
 
 console.log(player.inventory)

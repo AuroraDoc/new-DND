@@ -11,12 +11,14 @@
     "start": "nodemon excelItemData.js"
   },
   "dependencies": {
+    "better-sqlite3": "^12.2.0",
+    "dotenv": "^17.2.0",
     "nodemon": "^3.1.10",
+    "pg": "^8.16.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.3",
-    "read-excel-file": "^5.8.8",
-    "sqlite3": "^5.1.7"
+    "read-excel-file": "^5.8.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

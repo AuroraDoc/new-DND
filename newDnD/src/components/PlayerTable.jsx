@@ -13,7 +13,7 @@ function statBonus(stat){
 function PlayerTable({player}) {
   return (
     <div className="player-table">
-      <h2>{player.playerName}</h2>
+      <h2>{player.playername}</h2>
       <table>
         <thead>
           <tr>
@@ -47,7 +47,7 @@ function PlayerTable({player}) {
           </tr>
           <tr>
             <th>AC</th>
-            <td colSpan="6">{player.AC}</td>
+            <td colSpan="6">{player.ac}</td>
           </tr>
           <tr>
             <th>Proficencies</th>

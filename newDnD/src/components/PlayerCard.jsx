@@ -6,17 +6,17 @@ import "../styles/PlayerCard.css"
 function PlayerCard({player}) {
   return (
     <>
-      <Link to={`/${player.playerName}`}>
+      <Link to={`/${player.playername}`}>
         <div className="player-card">
           <div className="player-poster">
             <img src={`../images/bella.png`} alt={`Image of ${player.playerName}`} />
           </div>
           <div className="player-info">
-            <h3>Player Name: {player.playerName}</h3>
-            <h3>Character Name: {player.characterName}</h3>
-            <h3>Character Class: {player.characterClass}</h3>
-            <h3>Character Race: {player.characterRace}</h3>
-            <h3>Character AC: {player.AC}</h3>
+            <h3>Player Name: {player.playername}</h3>
+            <h3>Character Name: {player.charactername}</h3>
+            <h3>Character Class: {player.characterclass}</h3>
+            <h3>Character Race: {player.characterrace}</h3>
+            <h3>Character AC: {player.ac}</h3>
           </div>
 
         </div>

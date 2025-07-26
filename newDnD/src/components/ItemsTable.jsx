@@ -7,12 +7,20 @@ console.log(player.inventory)
 let playerInventory = player.inventory
 
 //let [playerInv, setPlayerInv] = useState(playerInventory)
+let [idNum1, setIdNum1] = useState()
+let [idNum2, setIdNum2] = useState()
+
+function handleSubmit(e) {
+  e.preventDefault()
+  setIdNum1()
+  setIdNum2()
+}
 
   return (
     <>
-      <form action="">
-        <input type="number" placeholder="First 3 Digits"/>
-        <input type="number" placeholder="Last 3 Digits"/>
+      <form onSubmit={handleSubmit}>
+        <input type="number" placeholder="First 3 Digits" value={idNum1} onChange={setIdNum1}/>
+        <input type="number" placeholder="Last 3 Digits" value={idNum2} onChange={setIdNum2}/>
         <button type="submit">Submit</button>
       </form>
       <table>

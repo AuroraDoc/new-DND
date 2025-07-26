@@ -1,37 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Route, Routes, } from "react-router-dom";
 import "./styles/App.css";
 import Home from "./pages/Home";
 import PlayerInventory from "./pages/PlayerInventory"
-import { mccoy, dennis, mak, bella } from "../players" 
-import pg from "pg";
 
-
-const db = new pg.Client({
-  user: process.env.REACT_APP_dbUser,
-  host: process.env.REACT_APP_dbHost,
-  database: process.env.REACT_APP_database,
-  password: process.env.REACT_APP_dbPassword,
-  port: process.env.REACT_APP_dbPort 
-
-})
-
-db.connect()
-
-let playerData = db.query("SELECT * FROM dndusers")
-
-
-let players = [mccoy, dennis, mak, bella]
 
 function App() {
+  const [playerData, setPlayerData] = useState([])
+  useEffect(() => {
+    fetch("http://localhost:3000/players")
+      .then((res) => res.json())
+      .then((players) => setPlayerData(players))
+      .catch((err) => console.error("Getting data from db failed:", err))
+  }, [])
 
   return <>
     <div>
       <main>
         <Routes>
-          <Route path="/" element={<Home players={players}/>} />
+          <Route path="/" element={<Home players={playerData}/>} />
           
-          {players.map(player => <Route path={player.playerName} element={<PlayerInventory player={player}/>}/>)}
+          {playerData.map(player => <Route path={player.playername} element={<PlayerInventory player={player}/>}/>)}
         </Routes>
       </main>
 

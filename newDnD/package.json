@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "test": "node test.js",
+    "server": "node server.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -12,9 +14,10 @@
   },
   "dependencies": {
     "better-sqlite3": "^12.2.0",
+    "cors": "^2.8.5",
     "dotenv": "^17.2.0",
+    "express": "^5.1.0",
     "nodemon": "^3.1.10",
-    "pg": "^8.16.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.3",

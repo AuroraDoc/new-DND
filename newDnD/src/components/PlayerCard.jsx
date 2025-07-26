@@ -6,7 +6,7 @@ import "../styles/PlayerCard.css"
 function PlayerCard({player}) {
   return (
     <>
-      <Link to={`/${player.playername}`}>
+      <Link to={`/inventory?userid=${player.id}`}>
         <div className="player-card">
           <div className="player-poster">
             <img src={`../images/bella.png`} alt={`Image of ${player.playerName}`} />

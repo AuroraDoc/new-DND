@@ -1,4 +1,5 @@
 import "../styles/PlayerTable.css"
+import { useEffect, useState } from "react"
 
 function statBonus(stat){
   let bonus = Math.floor((stat - 10) / 2)
@@ -11,6 +12,16 @@ function statBonus(stat){
 }
 
 function PlayerTable({player}) {
+
+  let [playerProficencies, setPlayerProficencies] = useState([])
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/proficencies?userid=${player.id}`)
+      .then((res) => res.json())
+      .then((proficency) => setPlayerProficencies(proficency))
+      .catch((err) => console.error("Getting data from db failed:", err))
+  }, [])
+
   return (
     <div className="player-table">
       <h2>{player.playername}</h2>
@@ -51,10 +62,9 @@ function PlayerTable({player}) {
           </tr>
           <tr>
             <th>Proficencies</th>
-            <td colSpan="1.5">{player.proficency1}</td>
-            <td colSpan="1.5">{player.proficency2}</td>
-            <td colSpan="1.5">{player.proficency3}</td>
-            <td colSpan="1.5">{player.proficency4}</td>
+            {playerProficencies.map((proficency) => (
+              <td colSpan="1.5">{proficency.proficency}</td>
+            ))}
           </tr>
 
         </tbody>

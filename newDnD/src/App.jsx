@@ -20,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home players={playerData}/>} />
           
-          {playerData.map(player => <Route path={player.playername} element={<PlayerInventory player={player}/>}/>)}
+          {playerData.map(player => <Route path="/inventory" element={<PlayerInventory player={player} key={player.id}/>}/>)}
         </Routes>
       </main>
 

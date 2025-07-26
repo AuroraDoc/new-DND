@@ -32,6 +32,21 @@ app.get('/players', (req, res) => {
     res.json(players)
 })
 
+app.get('/inventory', (req, res) => {
+    const playerId = req.query.userid;
+    let playerInvQuery = db.prepare(`SELECT * FROM inventory WHERE userid = ?`)
+    let playerInventory = playerInvQuery.all(playerId)
+    res.send(playerInventory)
+    console.log(playerId)
+})
+
+app.get("/proficencies", (req, res) => {
+    const playerId = req.query.userid
+    let playerProficencyQuery = db.prepare("SELECT * FROM proficencies WHERE userid = ?")
+    let playerProficenies = playerProficencyQuery.all(playerId)
+    res.json(playerProficenies)
+})
+
 app.listen(port, () => {
     console.log("Servers Up")
 })

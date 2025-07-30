@@ -94,15 +94,14 @@ app.post("/updateInventory", (req, res) => {
     db.prepare(query)
     query.run()
 
-    if(itemId < 422){
+/*    if(itemId < 422){
         let checkItemId = db.prepare(`SELECT itemnum1, description FROM items WHERE itemnum1 = ?`).all(itemId)
     } else if(422 < itemId < 1000){
         let checkItemId = db.prepare(`SELECT * FROM items WHERE itemnum2 = ?`).all(itemId)
     } else {
         let checkItemId = db.prepare(`SELECT * FROM items WHERE itemnum = ?`).all(itemId)
     }
-        
-
+*/    
 })
 
 

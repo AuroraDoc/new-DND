@@ -9,7 +9,7 @@ function PlayerCard({player}) {
       <Link to={`/inventory?userid=${player.id}`}>
         <div className="player-card">
           <div className="player-poster">
-            <img src={`../images/bella.png`} alt={`Image of ${player.playerName}`} />
+            <img src={`../images/bella.png`} alt={`Image of ${player.playername}`} />
           </div>
           <div className="player-info">
             <h3>Player Name: {player.playername}</h3>
@@ -17,6 +17,7 @@ function PlayerCard({player}) {
             <h3>Character Class: {player.characterclass}</h3>
             <h3>Character Race: {player.characterrace}</h3>
             <h3>Character AC: {player.ac}</h3>
+            <h3>Player Gold: {player.gold}</h3>
           </div>
 
         </div>

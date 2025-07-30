@@ -1,11 +1,16 @@
 import readXlsxFile from 'read-excel-file/node';
 
-readXlsxFile("./src/assets/Items.xlsx").then(row => {
-    console.log(row)
-})
+let items = []
 
+async function loadItems() {
+    try {
+        const rows = await readXlsxFile("./src/assets/Items.xlsx");
+        
+         
 
-let players = [];
-function loadPlayers(excelSheet) {
-  //loop through excel cells for player names
+    } catch (err) {
+        console.error("Error reading file:", err);
+    }
 }
+
+loadItems();

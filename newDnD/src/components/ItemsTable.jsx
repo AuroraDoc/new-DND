@@ -1,31 +1,56 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function ItemsTable({player}) {
+function ItemsTable({playerId}) {
 
-console.log(player.inventory)
+  const [playerInventory, setPlayerInventory] = useState([])
+  const [idNum, setIdNum] = useState("")
+  const [quantity, setQuantity] = useState("")
 
-let playerInventory = player.inventory
+  useEffect(() => {
+    if(!playerId) return
 
-//let [playerInv, setPlayerInv] = useState(playerInventory)
-let [idNum1, setIdNum1] = useState()
-let [idNum2, setIdNum2] = useState()
+    fetch(`http://localhost:3000/inventory?userid=${playerId}`)
+      .then((res) => res.json())
+      .then((playerInv) => setPlayerInventory(playerInv))
+      .catch((err) => console.error("Getting data from db failed:", err))
+  }, [playerId])
 
-function handleSubmit(e) {
-  e.preventDefault()
-  setIdNum1()
-  setIdNum2()
-}
+  async function handleSubmit(e) {
+    e.preventDefault()
+    try{
+      let res = await fetch('http://localhost:3000/updateInventory', {
+        
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+          userid: playerId,
+          itemid: idNum,
+          quantity: quantity
+        })
+      
+      })
+    } catch(e){
+      console.error('Error with sending item to updateInventory:', e)  
+    }
+    fetch(`http://localhost:3000/inventory?userid=${playerId}`)
+      .then((res) => res.json())
+      .then((playerInv) => setPlayerInventory(playerInv));
+  }
 
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input type="number" placeholder="First 3 Digits" value={idNum1} onChange={setIdNum1}/>
-        <input type="number" placeholder="Last 3 Digits" value={idNum2} onChange={setIdNum2}/>
+        <input type="number" placeholder="3 Digit ID Number" value={idNum} onChange={(e) => {setIdNum(Number(e.target.value))}}/>
+        <input type="number" placeholder="Quantity" value={quantity} onChange={(e) => {setQuantity(Number(e.target.value))}}/>
         <button type="submit">Submit</button>
       </form>
       <table>
         <thead>
           <tr>
+            <th>Item ID 1</th>
+            <th>Item ID 2</th>
             <th>Item Name</th>
             <th>Short Description</th>
             <th>Long Description</th>
@@ -37,12 +62,14 @@ function handleSubmit(e) {
         <tbody>
             {playerInventory.map(item => {
               return (
-              <tr>
+              <tr key={item.itemid}>
+                <td>{item.itemid}</td>
+                <td>{item.itemid2}</td>
                 <td>{item.itemName}</td>
-                <td>{item.shortDesc}</td>
-                <td>{item.longDesc}</td>
-                <td>{item.goldBuy}</td>
-                <td>{item.goldSell}</td>
+                <td>{item.description}</td>
+                <td>{item.effect}</td>
+                <td>{item.buy}</td>
+                <td>{item.sell}</td>
                 <td>{item.quantity}</td>
               </tr>
             )})}

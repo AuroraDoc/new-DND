@@ -81,7 +81,7 @@ app.post("/updateInventory", (req, res) => {
         if(itemPos == 1){
             query = `UPDATE inventory SET quantity = ? WHERE userid = ? && itemid = ?`
         } else{
-            query = query = `UPDATE inventory SET quantity = ? WHERE userid = ? && itemid2 = ?`
+            query = `UPDATE inventory SET quantity = ? WHERE userid = ? && itemid2 = ?`
         }
 
     } else{
